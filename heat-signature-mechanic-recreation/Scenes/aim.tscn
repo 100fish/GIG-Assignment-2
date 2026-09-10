@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bua31ayhb70m6"]
+
+[ext_resource type="Script" uid="uid://bwmlp4k34w2pj" path="res://Scenes/aim_area.gd" id="1_h4rmx"]
+[ext_resource type="Texture2D" uid="uid://bgtm5f35mu8co" path="res://Textures/ActiveAim.tres" id="2_35t0s"]
+[ext_resource type="Texture2D" uid="uid://dxcjajh5yfpl1" path="res://Textures/InactiveAim.tres" id="3_n68p2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tg2c1"]
+
+[node name="Aim" type="Area2D" unique_id=780397130]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_h4rmx")
+activeAim = ExtResource("2_35t0s")
+inactiveAim = ExtResource("3_n68p2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85682112]
+shape = SubResource("CircleShape2D_tg2c1")
