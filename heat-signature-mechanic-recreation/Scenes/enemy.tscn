@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c83f2e0y8asop"]
+
+[ext_resource type="Script" uid="uid://prpejgb5ns8u" path="res://Scenes/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://cggbqhb6exqfn" path="res://Textures/4tDTVJEPqeo89qTCC7dkmA.jpg" id="2_afpow"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_avgia"]
+
+[node name="Enemy" type="RigidBody2D" unique_id=1248554619]
+collision_layer = 3
+gravity_scale = 0.0
+script = ExtResource("1_1f0kj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1229839506]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_avgia")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=231923044]
+scale = Vector2(0.05, 0.08)
+texture = ExtResource("2_afpow")

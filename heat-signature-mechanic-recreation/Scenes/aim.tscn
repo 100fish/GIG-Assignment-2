@@ -1,17 +1,30 @@
 [gd_scene format=3 uid="uid://bua31ayhb70m6"]
 
 [ext_resource type="Script" uid="uid://bwmlp4k34w2pj" path="res://Scenes/aim_area.gd" id="1_h4rmx"]
-[ext_resource type="Texture2D" uid="uid://bgtm5f35mu8co" path="res://Textures/ActiveAim.tres" id="2_35t0s"]
-[ext_resource type="Texture2D" uid="uid://dxcjajh5yfpl1" path="res://Textures/InactiveAim.tres" id="3_n68p2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tg2c1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_tg2c1"]
+
+[sub_resource type="Gradient" id="Gradient_ldytr"]
+offsets = PackedFloat32Array(0.00949367, 1)
+colors = PackedColorArray(0.11764706, 0.11764706, 0.11764706, 0.19607843, 0.11764706, 0.11764706, 0.11764706, 0.19607843)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2gkdj"]
+gradient = SubResource("Gradient_ldytr")
 
 [node name="Aim" type="Area2D" unique_id=780397130]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_h4rmx")
-activeAim = ExtResource("2_35t0s")
-inactiveAim = ExtResource("3_n68p2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85682112]
+scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_tg2c1")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=495164194]
+scale = Vector2(394.63, 394.63)
+mesh = SubResource("SphereMesh_tg2c1")
+texture = SubResource("GradientTexture1D_2gkdj")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
