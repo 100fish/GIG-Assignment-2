@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://c83f2e0y8asop"]
 
 [ext_resource type="Script" uid="uid://prpejgb5ns8u" path="res://Scenes/enemy.gd" id="1_1f0kj"]
-[ext_resource type="Texture2D" uid="uid://cggbqhb6exqfn" path="res://Textures/4tDTVJEPqeo89qTCC7dkmA.jpg" id="2_afpow"]
+[ext_resource type="Texture2D" uid="uid://ctakoia833ek4" path="res://Textures/Cuce.jpg" id="2_afpow"]
+[ext_resource type="Texture2D" uid="uid://dxcjajh5yfpl1" path="res://Textures/InactiveAim.tres" id="3_afpow"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_avgia"]
 
@@ -14,6 +15,11 @@ script = ExtResource("1_1f0kj")
 scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_avgia")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=231923044]
-scale = Vector2(0.05, 0.08)
+[node name="Body" type="Sprite2D" parent="." unique_id=231923044]
+position = Vector2(1, 0)
+scale = Vector2(0.084078714, 0.08)
 texture = ExtResource("2_afpow")
+
+[node name="Target" type="Sprite2D" parent="." unique_id=788870096]
+scale = Vector2(0.058670033, 0.058670033)
+texture = ExtResource("3_afpow")

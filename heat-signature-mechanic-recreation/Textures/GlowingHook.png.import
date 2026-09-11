@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cggbqhb6exqfn"
-path="res://.godot/imported/4tDTVJEPqeo89qTCC7dkmA.jpg-39db22361f99c68aba4dd6f6faa4167a.ctex"
+uid="uid://ofra3c15l3yl"
+path="res://.godot/imported/GlowingHook.png-476de75b7c0115a4e391eeec9de54f27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/4tDTVJEPqeo89qTCC7dkmA.jpg"
-dest_files=["res://.godot/imported/4tDTVJEPqeo89qTCC7dkmA.jpg-39db22361f99c68aba4dd6f6faa4167a.ctex"]
+source_file="res://Textures/GlowingHook.png"
+dest_files=["res://.godot/imported/GlowingHook.png-476de75b7c0115a4e391eeec9de54f27.ctex"]
 
 [params]
 

@@ -13,18 +13,33 @@ colors = PackedColorArray(0.11764706, 0.11764706, 0.11764706, 0.19607843, 0.1176
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_2gkdj"]
 gradient = SubResource("Gradient_ldytr")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tg2c1"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ldytr"]
+
 [node name="Aim" type="Area2D" unique_id=780397130]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_h4rmx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85682112]
+[node name="Circle" type="CollisionShape2D" parent="." unique_id=85682112]
 scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_tg2c1")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=495164194]
-scale = Vector2(394.63, 394.63)
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Circle" unique_id=495164194]
+visible = false
+scale = Vector2(19.731499, 19.731499)
 mesh = SubResource("SphereMesh_tg2c1")
+texture = SubResource("GradientTexture1D_2gkdj")
+
+[node name="Square" type="CollisionShape2D" parent="." unique_id=2056789701]
+scale = Vector2(100, 4)
+shape = SubResource("RectangleShape2D_tg2c1")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Square" unique_id=916720639]
+visible = false
+scale = Vector2(20, 18.695)
+mesh = SubResource("QuadMesh_ldytr")
 texture = SubResource("GradientTexture1D_2gkdj")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

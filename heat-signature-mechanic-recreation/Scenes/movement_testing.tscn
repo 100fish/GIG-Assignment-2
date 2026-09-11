@@ -1,28 +1,154 @@
 [gd_scene format=3 uid="uid://6kodneaifbne"]
 
 [ext_resource type="Script" uid="uid://xeb08mfcm2xt" path="res://Scenes/character_body_2d.gd" id="1_xipaq"]
+[ext_resource type="Script" uid="uid://bbnvlbu1e2i7t" path="res://Scenes/nebula.gd" id="2_1v0pg"]
 [ext_resource type="Texture2D" uid="uid://boc4owthrvykc" path="res://Textures/6484481.jpg" id="2_avgia"]
 [ext_resource type="PackedScene" uid="uid://bua31ayhb70m6" path="res://Scenes/aim.tscn" id="3_1v0pg"]
-[ext_resource type="PackedScene" uid="uid://brb3jeq1w67jk" path="res://Scenes/Wall.tscn" id="3_avgia"]
 [ext_resource type="Texture2D" uid="uid://dxcjajh5yfpl1" path="res://Textures/InactiveAim.tres" id="4_jsdk7"]
 [ext_resource type="PackedScene" uid="uid://c83f2e0y8asop" path="res://Scenes/enemy.tscn" id="5_twsfd"]
+[ext_resource type="PackedScene" uid="uid://cjnucfsrcehbb" path="res://Scenes/room.tscn" id="6_twsfd"]
+[ext_resource type="Script" uid="uid://cur3vnhwc46sf" path="res://Scenes/camera_2d.gd" id="8_jsdk7"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xipaq"]
 load_path = "res://.godot/imported/00fish.jpg-cc864acb230d81dc2dee4d5a3a31696e.ctex"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hw5bw"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_c67wr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tg2c1"]
+
+[sub_resource type="Animation" id="Animation_jsdk7"]
+resource_name = "CameraShake"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LowerPlayer/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.52873594, 0.78642315, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(8.385, 4.61), Vector2(-20, 5.51), Vector2(-19.107, -11.645), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3vnb6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LowerPlayer/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hbc33"]
+_data = {
+&"CameraShake": SubResource("Animation_jsdk7"),
+&"RESET": SubResource("Animation_3vnb6")
+}
+
 [node name="MovementTesting" type="Node2D" unique_id=319995960]
 
-[node name="LowerPlayer" type="CharacterBody2D" parent="." unique_id=72271211]
+[node name="Nebula" type="Sprite2D" parent="." unique_id=2102194344]
+position = Vector2(563, 259)
+scale = Vector2(0.70000005, 0.70000005)
+texture = ExtResource("2_avgia")
+script = ExtResource("2_1v0pg")
+
+[node name="Aim" parent="." unique_id=780397130 instance=ExtResource("3_1v0pg")]
+position = Vector2(566, 274)
+
+[node name="Environment" type="Node2D" parent="." unique_id=1069611576]
+
+[node name="Room" parent="Environment" unique_id=589771687 instance=ExtResource("6_twsfd")]
+
+[node name="Room2" parent="Environment" unique_id=517032463 instance=ExtResource("6_twsfd")]
+position = Vector2(-1807, -4)
+
+[node name="Room3" parent="Environment" unique_id=465567601 instance=ExtResource("6_twsfd")]
+position = Vector2(-600, -2)
+
+[node name="Room4" parent="Environment" unique_id=2022086501 instance=ExtResource("6_twsfd")]
+position = Vector2(-1203, -3)
+
+[node name="Enemy" parent="." unique_id=930179532 instance=ExtResource("5_twsfd")]
+position = Vector2(-994, 205)
+collision_layer = 7
+linear_damp = 1.0
+
+[node name="Enemy2" parent="." unique_id=1248554619 instance=ExtResource("5_twsfd")]
+position = Vector2(-65, -183)
+collision_layer = 7
+linear_damp = 1.0
+
+[node name="Enemy3" parent="." unique_id=863955775 instance=ExtResource("5_twsfd")]
+position = Vector2(-986, -180)
+collision_layer = 7
+linear_damp = 1.0
+
+[node name="Enemy4" parent="." unique_id=1015020616 instance=ExtResource("5_twsfd")]
+position = Vector2(-1234, 214)
+collision_layer = 7
+linear_damp = 1.0
+
+[node name="Enemy5" parent="." unique_id=1609359051 instance=ExtResource("5_twsfd")]
+position = Vector2(-1388, 94)
+collision_layer = 7
+linear_damp = 1.0
+
+[node name="Enemy6" parent="." unique_id=1678891585 instance=ExtResource("5_twsfd")]
+position = Vector2(-167, -153)
+collision_layer = 7
+linear_damp = 1.0
+
+[node name="Enemy9" parent="." unique_id=756230854 instance=ExtResource("5_twsfd")]
+position = Vector2(-1919, -211)
+collision_layer = 7
+linear_damp = 1.0
+
+[node name="Enemy10" parent="." unique_id=293491995 instance=ExtResource("5_twsfd")]
+position = Vector2(-1985, 186)
+collision_layer = 7
+linear_damp = 1.0
+
+[node name="Enemy11" parent="." unique_id=588149644 instance=ExtResource("5_twsfd")]
+position = Vector2(-2031, -218)
+collision_layer = 7
+linear_damp = 1.0
+
+[node name="Enemy12" parent="." unique_id=120540875 instance=ExtResource("5_twsfd")]
+position = Vector2(-1615, -207)
+collision_layer = 7
+linear_damp = 1.0
+
+[node name="Enemy13" parent="." unique_id=647722118 instance=ExtResource("5_twsfd")]
+position = Vector2(-1622, 209)
+collision_layer = 7
+linear_damp = 1.0
+
+[node name="Enemy7" parent="." unique_id=424228610 instance=ExtResource("5_twsfd")]
+position = Vector2(-1077, -218)
+collision_layer = 7
+linear_damp = 1.0
+
+[node name="Enemy8" parent="." unique_id=376555276 instance=ExtResource("5_twsfd")]
+position = Vector2(-1338, 171)
+collision_layer = 7
+linear_damp = 1.0
+
+[node name="LowerPlayer" type="CharacterBody2D" parent="." unique_id=72271211 groups=["Player"]]
 position = Vector2(566, 274)
 scale = Vector2(2.9999995, 2.9999995)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_xipaq")
-
-[node name="Nebula" type="Sprite2D" parent="LowerPlayer" unique_id=2102194344]
-position = Vector2(-1, -5.0000024)
-scale = Vector2(0.23333338, 0.23333338)
-texture = ExtResource("2_avgia")
 
 [node name="UpperPlayer" type="Node2D" parent="LowerPlayer" unique_id=374701973]
 scale = Vector2(0.3333334, 0.3333334)
@@ -36,36 +162,33 @@ position = Vector2(600, 0)
 scale = Vector2(0.4, 3)
 texture = ExtResource("4_jsdk7")
 
-[node name="PathCrosshair" type="Node2D" parent="LowerPlayer/UpperPlayer" unique_id=481400721]
-scale = Vector2(9.5, 1)
-
-[node name="PathCrosshairSprite" type="Sprite2D" parent="LowerPlayer/UpperPlayer/PathCrosshair" unique_id=236267092]
-position = Vector2(32, 0)
+[node name="PathCrosshair" type="Sprite2D" parent="LowerPlayer/UpperPlayer" unique_id=236267092]
 texture = ExtResource("4_jsdk7")
+
+[node name="Camera2D" type="Camera2D" parent="LowerPlayer" unique_id=941172543]
+zoom = Vector2(1.2, 1.2)
+script = ExtResource("8_jsdk7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LowerPlayer" unique_id=910480423]
 shape = SubResource("CircleShape2D_hw5bw")
 debug_color = Color(0.18240574, 0.60467243, 0.6123441, 0.41960785)
 
-[node name="Camera2D" type="Camera2D" parent="LowerPlayer" unique_id=941172543]
+[node name="CameraYoyo" type="RigidBody2D" parent="LowerPlayer" unique_id=1546329930]
+collision_layer = 0
+collision_mask = 0
 
-[node name="Aim" parent="." unique_id=780397130 instance=ExtResource("3_1v0pg")]
-position = Vector2(566, 274)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerPlayer/CameraYoyo" unique_id=1327746501]
+shape = SubResource("CircleShape2D_c67wr")
 
-[node name="Enemy" parent="." unique_id=930179532 instance=ExtResource("5_twsfd")]
-position = Vector2(353, 103)
+[node name="CameraAnchor" type="RigidBody2D" parent="LowerPlayer" unique_id=1289819793]
+collision_layer = 0
+collision_mask = 0
 
-[node name="Environment" type="Node2D" parent="." unique_id=1069611576]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerPlayer/CameraAnchor" unique_id=1650779386]
+shape = SubResource("CircleShape2D_tg2c1")
 
-[node name="StaticBody2D" parent="Environment" unique_id=801435283 instance=ExtResource("3_avgia")]
-position = Vector2(553, 34)
-scale = Vector2(27.119995, 3)
-
-[node name="StaticBody2D2" parent="Environment" unique_id=1716466627 instance=ExtResource("3_avgia")]
-position = Vector2(553.00006, 490.00003)
-scale = Vector2(27.119995, 3)
-
-[node name="Room" type="Node2D" parent="Environment" unique_id=1976178244]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1915850170]
+libraries/ = SubResource("AnimationLibrary_hbc33")
 
 [connection signal="aimingSignal" from="Aim" to="LowerPlayer" method="_on_aim_aiming_signal"]
 [connection signal="body_entered" from="Aim" to="Aim" method="_on_body_entered"]

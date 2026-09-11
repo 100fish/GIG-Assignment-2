@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnf4ckenbg21d"
-path="res://.godot/imported/Cucumber2.jpg-0a763d1271b143f8d7088b6bcac6e676.ctex"
+uid="uid://bqd2f3023fr7y"
+path="res://.godot/imported/DeadCuce.jpg-8c25df5d2a537d755f9fefed9c435975.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Cucumber2.jpg"
-dest_files=["res://.godot/imported/Cucumber2.jpg-0a763d1271b143f8d7088b6bcac6e676.ctex"]
+source_file="res://Textures/DeadCuce.jpg"
+dest_files=["res://.godot/imported/DeadCuce.jpg-8c25df5d2a537d755f9fefed9c435975.ctex"]
 
 [params]
 

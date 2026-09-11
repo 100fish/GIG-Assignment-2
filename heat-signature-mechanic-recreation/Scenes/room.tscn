@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cjnucfsrcehbb"]
+
+[ext_resource type="PackedScene" uid="uid://brb3jeq1w67jk" path="res://Scenes/Wall.tscn" id="1_mbine"]
+
+[sub_resource type="Gradient" id="Gradient_mbine"]
+colors = PackedColorArray(0.11764706, 0.20784314, 0.2784314, 1, 0.11764706, 0.20784314, 0.2784314, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tg2c1"]
+gradient = SubResource("Gradient_mbine")
+
+[node name="Room" type="Node2D" unique_id=589771687]
+
+[node name="Floor" type="Sprite2D" parent="." unique_id=2041147580]
+scale = Vector2(10, 10)
+texture = SubResource("GradientTexture2D_tg2c1")
+
+[node name="Wall" parent="." unique_id=801435283 instance=ExtResource("1_mbine")]
+position = Vector2(0, 300)
+scale = Vector2(30, 3)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Wall2" parent="." unique_id=2135048187 instance=ExtResource("1_mbine")]
+position = Vector2(0, -300)
+scale = Vector2(30, 3)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Entryway" type="Node2D" parent="." unique_id=502180765]
+
+[node name="Left" parent="Entryway" unique_id=1165596340 instance=ExtResource("1_mbine")]
+position = Vector2(-300, 200)
+rotation = -1.5707964
+scale = Vector2(10, 3)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Right" parent="Entryway" unique_id=1500915746 instance=ExtResource("1_mbine")]
+position = Vector2(-300, -200)
+rotation = -1.5707964
+scale = Vector2(10, 3)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Entryway2" type="Node2D" parent="." unique_id=137429534]
+
+[node name="Left" parent="Entryway2" unique_id=886261367 instance=ExtResource("1_mbine")]
+position = Vector2(300, 200)
+rotation = -1.5707964
+scale = Vector2(10, 3)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Right" parent="Entryway2" unique_id=1025741991 instance=ExtResource("1_mbine")]
+position = Vector2(300, -200)
+rotation = -1.5707964
+scale = Vector2(10, 3)
+collision_layer = 4
+collision_mask = 4

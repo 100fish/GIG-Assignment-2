@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
+
 enum AimState
 {
 	Inactive,
@@ -21,7 +23,7 @@ var targetPosition: Vector2
 var lockedTarget: RigidBody2D
 
 @onready var crosshair: Sprite2D = $UpperPlayer/Crosshair
-@onready var pathCrosshair: Sprite2D = $UpperPlayer/PathCrosshair/PathCrosshairSprite
+@onready var pathCrosshair: Sprite2D = $UpperPlayer/PathCrosshair
 
 const CROSSHAIR = preload("uid://bktdp65c8hx8s")
 const PATH_CROSSHAIR = preload("uid://bgtm5f35mu8co")
@@ -74,7 +76,8 @@ func _aimstate_locked_exit():
 
 func _aimstate_attacking_exit():
 	Speed /= attackSpeedMultiplier
-	lockedTarget._get_fucking_domed()
+	lockedTarget._get_hit(global_position, 20)
+	animation_player.play("CameraShake", -1, 6)
 
 func _aimstate_inactive_enter():
 	pass
@@ -113,6 +116,9 @@ func _physics_process(_delta: float) -> void:
 				return
 			
 			targetPosition = aim.activeTarget.position
+			
+			pathCrosshair.global_position = targetPosition.lerp(position,.5)
+			pathCrosshair.scale = (Vector2(targetPosition.distance_to(position) / 70, 1))
 			
 			if position.distance_to(targetPosition) > 600:
 				_set_aimstate(AimState.Aiming)
