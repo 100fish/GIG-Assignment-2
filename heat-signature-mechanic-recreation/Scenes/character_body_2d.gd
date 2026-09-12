@@ -25,7 +25,7 @@ var lockedTarget: RigidBody2D
 @onready var crosshair: Sprite2D = $UpperPlayer/Crosshair
 @onready var pathCrosshair: Sprite2D = $UpperPlayer/PathCrosshair
 
-const CROSSHAIR = preload("uid://bktdp65c8hx8s")
+const CROSSHAIR = preload("uid://daybbr8incccg")
 const PATH_CROSSHAIR = preload("uid://bgtm5f35mu8co")
 const INACTIVE_AIM = preload("uid://dxcjajh5yfpl1")
 
@@ -67,6 +67,8 @@ func _aimstate_inactive_exit():
 	pass
 
 func _aimstate_aiming_exit():
+	Time.
+	
 	aim.aiming = false;
 	crosshair.texture = INACTIVE_AIM
 

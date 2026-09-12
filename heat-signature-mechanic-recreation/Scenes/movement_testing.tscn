@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dxcjajh5yfpl1" path="res://Textures/InactiveAim.tres" id="4_jsdk7"]
 [ext_resource type="PackedScene" uid="uid://c83f2e0y8asop" path="res://Scenes/enemy.tscn" id="5_twsfd"]
 [ext_resource type="PackedScene" uid="uid://cjnucfsrcehbb" path="res://Scenes/room.tscn" id="6_twsfd"]
+[ext_resource type="Texture2D" uid="uid://daybbr8incccg" path="res://Textures/Single Crosshair.png" id="7_3vnb6"]
 [ext_resource type="Script" uid="uid://cur3vnhwc46sf" path="res://Scenes/camera_2d.gd" id="8_jsdk7"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xipaq"]
@@ -158,12 +159,14 @@ scale = Vector2(0.20999996, 0.20999996)
 texture = SubResource("CompressedTexture2D_xipaq")
 
 [node name="Crosshair" type="Sprite2D" parent="LowerPlayer/UpperPlayer" unique_id=1029807878]
-position = Vector2(600, 0)
-scale = Vector2(0.4, 3)
-texture = ExtResource("4_jsdk7")
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("7_3vnb6")
 
 [node name="PathCrosshair" type="Sprite2D" parent="LowerPlayer/UpperPlayer" unique_id=236267092]
 texture = ExtResource("4_jsdk7")
+
+[node name="Node2D" type="Node2D" parent="LowerPlayer/UpperPlayer" unique_id=212104711]
+position = Vector2(600, 0)
 
 [node name="Camera2D" type="Camera2D" parent="LowerPlayer" unique_id=941172543]
 zoom = Vector2(1.2, 1.2)
