@@ -16,6 +16,9 @@ var activeTarget: RigidBody2D
 @onready var path_crosshair: Node2D = $"../LowerPlayer/UpperPlayer/PathCrosshair"
 
 @onready var player: CharacterBody2D = $"../LowerPlayer"
+@onready var camera_2d: Camera2D = $"../LowerPlayer/Camera2D"
+
+@export var zoomSpeed: float = .1
 
 #region input
 func _input(event: InputEvent) -> void:
@@ -23,6 +26,13 @@ func _input(event: InputEvent) -> void:
 		EnableAim()
 	elif event.is_action_released("Aim"):
 		DisableAim()
+	
+	if event.is_action_pressed("ZoomIn"):
+		camera_2d.zoom += Vector2(zoomSpeed,zoomSpeed)
+	
+	if event.is_action_pressed("ZoomOut"):
+		camera_2d.zoom -= Vector2(zoomSpeed,zoomSpeed)
+	
 
 func EnableAim() -> void:
 	clicking = true

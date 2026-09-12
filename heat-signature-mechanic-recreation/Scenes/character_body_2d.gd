@@ -9,25 +9,30 @@ enum AimState
 	Locked,
 	Attacking
 }
+var attacking: bool = false
 
 var aimState: AimState = AimState.Inactive
 @onready var aim: Area2D = $"../Aim"
 
 @export var defaultSpeed: float = 300
-@export var attackSpeedMultiplier: float = 30
-var Speed = 300.0
+@export var attackSpeedMultiplier: float = 20
+@export var Speed = 300.0
+@export var timeSlow: float = .2
 
 @onready var upper_player: Node2D = $UpperPlayer
 
 var targetPosition: Vector2
 var lockedTarget: RigidBody2D
+@onready var rayCast: RayCast2D = $RayCast2D
 
 @onready var crosshair: Sprite2D = $UpperPlayer/Crosshair
 @onready var pathCrosshair: Sprite2D = $UpperPlayer/PathCrosshair
+@onready var vignette: TextureRect = $Camera2D/CanvasLayer/TextureRect
 
 const CROSSHAIR = preload("uid://daybbr8incccg")
 const PATH_CROSSHAIR = preload("uid://bgtm5f35mu8co")
 const INACTIVE_AIM = preload("uid://dxcjajh5yfpl1")
+const VIGNETTE = preload("uid://bk5n6t8gahvyo")
 
 #region state machine
 func _set_aimstate(newState: AimState) -> void:
@@ -67,19 +72,25 @@ func _aimstate_inactive_exit():
 	pass
 
 func _aimstate_aiming_exit():
-	Time.
 	
 	aim.aiming = false;
 	crosshair.texture = INACTIVE_AIM
+	vignette.texture = INACTIVE_AIM
+	
+	Engine.time_scale = 1
 
 func _aimstate_locked_exit():
 	aim.aiming = false;
 	pathCrosshair.texture = INACTIVE_AIM
+	vignette.texture = INACTIVE_AIM
+	
+	Engine.time_scale = 1
 
 func _aimstate_attacking_exit():
-	Speed /= attackSpeedMultiplier
-	lockedTarget._get_hit(global_position, 20)
-	animation_player.play("CameraShake", -1, 6)
+	if attacking:
+		Speed /= attackSpeedMultiplier
+		lockedTarget._get_hit(global_position, 20)
+		animation_player.play("CameraShake", -1, 8)
 
 func _aimstate_inactive_enter():
 	pass
@@ -87,15 +98,32 @@ func _aimstate_inactive_enter():
 func _aimstate_aiming_enter():
 	aim.aiming = true;
 	crosshair.texture = CROSSHAIR
+	vignette.texture = VIGNETTE
+	
+	Engine.time_scale = timeSlow
 
 func _aimstate_locked_enter():
 	aim.aiming = true;
 	pathCrosshair.texture = PATH_CROSSHAIR
+	vignette.texture = VIGNETTE
+	
+	Engine.time_scale = timeSlow
 
 
 func _aimstate_attacking_enter():
+	attacking = true
+	
 	Speed *= attackSpeedMultiplier
 	lockedTarget = aim.activeTarget
+	
+	rayCast.target_position = lockedTarget.global_position
+	
+	if rayCast.is_colliding():
+		print("Hi raycast hit")
+		attacking = false
+		_set_aimstate(AimState.Inactive)
+	else:
+		print("No raycast no hit")
 
 #endregion
 

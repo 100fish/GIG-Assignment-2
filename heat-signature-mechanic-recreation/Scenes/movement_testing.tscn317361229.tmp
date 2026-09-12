@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cjnucfsrcehbb" path="res://Scenes/room.tscn" id="6_twsfd"]
 [ext_resource type="Texture2D" uid="uid://daybbr8incccg" path="res://Textures/Single Crosshair.png" id="7_3vnb6"]
 [ext_resource type="Script" uid="uid://cur3vnhwc46sf" path="res://Scenes/camera_2d.gd" id="8_jsdk7"]
-[ext_resource type="Texture2D" uid="uid://bk5n6t8gahvyo" path="res://Textures/Vignette.png" id="10_hbc33"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xipaq"]
 load_path = "res://.godot/imported/00fish.jpg-cc864acb230d81dc2dee4d5a3a31696e.ctex"
@@ -57,24 +56,6 @@ _data = {
 }
 
 [node name="MovementTesting" type="Node2D" unique_id=319995960]
-
-[node name="Nebula4" type="Sprite2D" parent="." unique_id=739861733]
-position = Vector2(557, 268)
-scale = Vector2(132.359, 132.359)
-texture = ExtResource("2_avgia")
-script = ExtResource("2_1v0pg")
-
-[node name="Nebula3" type="Sprite2D" parent="." unique_id=1269803096]
-position = Vector2(557, 268)
-scale = Vector2(25.104, 25.104)
-texture = ExtResource("2_avgia")
-script = ExtResource("2_1v0pg")
-
-[node name="Nebula2" type="Sprite2D" parent="." unique_id=252986890]
-position = Vector2(557, 268)
-scale = Vector2(2.674, 2.674)
-texture = ExtResource("2_avgia")
-script = ExtResource("2_1v0pg")
 
 [node name="Nebula" type="Sprite2D" parent="." unique_id=2102194344]
 position = Vector2(563, 259)
@@ -178,25 +159,18 @@ scale = Vector2(0.20999996, 0.20999996)
 texture = SubResource("CompressedTexture2D_xipaq")
 
 [node name="Crosshair" type="Sprite2D" parent="LowerPlayer/UpperPlayer" unique_id=1029807878]
-scale = Vector2(0.74, 0.74)
+scale = Vector2(0.78, 0.78)
 texture = ExtResource("7_3vnb6")
 
 [node name="PathCrosshair" type="Sprite2D" parent="LowerPlayer/UpperPlayer" unique_id=236267092]
 texture = ExtResource("4_jsdk7")
 
+[node name="Node2D" type="Node2D" parent="LowerPlayer/UpperPlayer" unique_id=212104711]
+position = Vector2(600, 0)
+
 [node name="Camera2D" type="Camera2D" parent="LowerPlayer" unique_id=941172543]
 zoom = Vector2(1.2, 1.2)
 script = ExtResource("8_jsdk7")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="LowerPlayer/Camera2D" unique_id=419687270]
-
-[node name="TextureRect" type="TextureRect" parent="LowerPlayer/Camera2D/CanvasLayer" unique_id=147968028]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_hbc33")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LowerPlayer" unique_id=910480423]
 shape = SubResource("CircleShape2D_hw5bw")
@@ -215,9 +189,6 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LowerPlayer/CameraAnchor" unique_id=1650779386]
 shape = SubResource("CircleShape2D_tg2c1")
-
-[node name="RayCast2D" type="RayCast2D" parent="LowerPlayer" unique_id=116670024]
-collision_mask = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1915850170]
 libraries/ = SubResource("AnimationLibrary_hbc33")
